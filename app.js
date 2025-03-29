@@ -3,13 +3,18 @@ const morgan = require('morgan')
 const app = express();
 const mongoose = require('mongoose')
 const blogRoutes = require('./routes/blogRoutes')
+const PORT = 3000;
 //connect to mongodb
-const dbURI = "mongodb+srv://vishal:vishal001@cluster0.phkdhd1.mongodb.net/learning-node?retryWrites=true&w=majority&appName=Cluster0"
+// const dbURI = "mongodb+srv://vishal:vishal001@cluster0.phkdhd1.mongodb.net/learning-node?retryWrites=true&w=majority&appName=Cluster0"
+const dbURI = "mongodb://localhost:27017/blogmania"
 mongoose.connect(dbURI)
     .then((result) => console.log('connected to db'))
     .catch((err) =>console.log(err))
 //listen for requests
-app.listen(3000);
+// app.listen(3000);
+app.listen(PORT, () => {
+    console.log(`🚀 Server is running on http://localhost:${PORT}`);
+  });
 //register view engine
 app.set('view engine', 'ejs');
 
