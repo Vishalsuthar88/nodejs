@@ -4,9 +4,10 @@ const app = express();
 const mongoose = require('mongoose')
 const blogRoutes = require('./routes/blogRoutes')
 const PORT = 3000;
-//connect to mongodb
-// const dbURI = "mongodb+srv://vishal:vishal001@cluster0.phkdhd1.mongodb.net/learning-node?retryWrites=true&w=majority&appName=Cluster0"
-const dbURI = "mongodb://localhost:27017/blogmania"
+require('dotenv').config();
+//connect to mongodb\
+const dbURI=process.env.MONGODB_URI;
+// const dbURI = "mongodb://localhost:27017/blogmania" //MONGODB COMPASS
 mongoose.connect(dbURI)
     .then((result) => console.log('connected to db'))
     .catch((err) =>console.log(err))
